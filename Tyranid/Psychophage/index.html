@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title id="titre"></title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+	background-color: #858585;
+  
+    }
+
+    .image-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .image-container img {
+      max-width: 500px;
+      height: auto;
+      flex: 1 1 45%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 600px) {
+      .image-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-container img {
+        width: 70%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+	<a class="button-retour" href="../index.html">← Retour</a>
+  <h1 id="titre2"></h1>
+  <div class="image-container" id="images"></div>
+
+  <script>
+    // Récupère le nom du dossier à partir de l'URL
+    const pathParts = window.location.pathname.split('/');
+    const dossier = pathParts[pathParts.length - 2] || 'default';
+
+    // Construit les noms des images
+    const img1 = `${dossier}_1.png`;
+    const img2 = `${dossier}_2.png`;
+
+    const container = document.getElementById('images');
+
+    [img1, img2].forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = src;
+      container.appendChild(img);
+    });
+	
+	document.getElementById('titre').textContent = dossier;
+	document.getElementById('titre2').textContent = dossier;
+  </script>
+</body>
+</html>

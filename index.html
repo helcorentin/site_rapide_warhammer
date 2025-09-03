@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Choix de l'armée</title>
+  <style>
+  body{
+	background-color: #858585;
+  }
+    .tab {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
+    .tab:hover {
+      background-color: #ddd;
+    }
+    #tabs {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Choix de l'armée :</h1>
+  <div id="tabs"></div>
+
+  <script>
+    // Liste des dossiers connus à l'avance
+    const dossiers = ['Tyranid', 'Space_Marine'];
+
+    const tabsContainer = document.getElementById('tabs');
+
+    dossiers.forEach(nom => {
+      const bouton = document.createElement('button');
+      bouton.className = 'tab';
+      bouton.textContent = nom;
+      bouton.onclick = () => {
+        window.location.href = `${nom}/index.html`;
+      };
+      tabsContainer.appendChild(bouton);
+    });
+  </script>
+</body>
+</html>
